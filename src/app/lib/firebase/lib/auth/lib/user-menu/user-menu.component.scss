@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+.handle{
+  img{
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: .5rem;
+  }
+}

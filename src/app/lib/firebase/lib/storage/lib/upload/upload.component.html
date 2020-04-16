@@ -1,0 +1,6 @@
+<div class="upload-form">
+  <input hidden type="file" #uploader
+         (change)="detectFiles($event)"/>
+  <button mat-flat-button color="primary" (click)="uploader.click()" *ngIf="! progressBar || ! isUploading">{{label}}</button>
+  <mat-progress-bar *ngIf="progressBar && isUploading" mode="determinate"  [value]="uploadPercentage"></mat-progress-bar>
+</div>
