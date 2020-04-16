@@ -4,13 +4,14 @@ import { UserMenuComponent } from './lib/user-menu/user-menu.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-import {UserService} from './lib';
+import {UserService} from './lib/user.service';
+import { SignInButtonComponent } from './lib/sign-in-button/sign-in-button.component';
 
 
 
 @NgModule({
-  declarations: [UserMenuComponent],
-  exports: [UserMenuComponent],
+  declarations: [UserMenuComponent, SignInButtonComponent],
+  exports: [UserMenuComponent, SignInButtonComponent],
   imports: [
     CommonModule,
     MatDividerModule,

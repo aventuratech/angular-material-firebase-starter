@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import * as firebase from 'firebase';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 import { auth } from 'firebase/app';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {FirebaseService} from '../firebase/firebase.service';
 
 export interface UserAuthInstance {
   displayName?: string;
@@ -32,10 +34,10 @@ export class UserService {
   private profiles = {};
 
   get auth() {
-    return this.firebase.auth();
+    return firebase.auth();
   }
 
-  constructor(private firebase: FirebaseService) {
+  constructor() {
     // load the user from the session
     this.loadSession();
 
@@ -101,12 +103,12 @@ export class UserService {
   }
 
   setProps(uid, props: any) {
-    this.firebase.firestore().collection('user_props').doc(uid).set(props);
+    firebase.firestore().collection('user_props').doc(uid).set(props);
   }
 
   getProps(uid) {
     const subject = new Subject();
-    this.firebase.firestore().collection('user_props').doc(uid).get().then(res => {
+    firebase.firestore().collection('user_props').doc(uid).get().then(res => {
       subject.next(res.data());
     });
     return subject;

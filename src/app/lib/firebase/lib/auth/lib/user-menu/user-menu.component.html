@@ -1,10 +1,12 @@
-<mat-menu #userMenu="matMenu">
-  <button mat-menu-item routerLink="/app/profile">Profile</button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item (click)="signOut()">Sign Out</button>
-</mat-menu>
+<div class="user-menu" *ngIf="user">
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/app/profile">Profile</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="signOut()">Sign Out</button>
+  </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="userMenu" class="handle">
-  <img class="avatar" *ngIf="user.photoURL" [src]="user.photoURL" alt="user photo">
-  {{user.displayName}}
-</button>
+  <button mat-button [matMenuTriggerFor]="userMenu" class="handle">
+    <img class="avatar" *ngIf="user.photoURL" [src]="user.photoURL" alt="user photo">
+    {{user.displayName}}
+  </button>
+</div>
